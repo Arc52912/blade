@@ -12,5 +12,14 @@ class Learner extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public static function list(){
+        $learners = Learner::orderByRaw('user_id')->get();
+        $list = [];
+        foreach($learners as $lrn){
+            $list[$lrn->$id];
+        }
+        return $list;
+    }
 }
 

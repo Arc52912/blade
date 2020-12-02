@@ -17,4 +17,13 @@ class Instructor extends Model
     public function courses(){
         return $this->hasMany('App\Course');
     }
+    
+    public static function list(){
+        $instructors = Instructor::orderByRaw('user_id')->get();
+        $list = [];
+        foreach($instructors as $ins){
+            $list[$ins->$id];
+        }
+        return $list;
+    }
 }

@@ -12,4 +12,34 @@ class LearnerController extends Controller
         ->orderByRaw('lname', 'fname')->get();
         return view('learners.index', ['learners'=>$learners]);
     }
+
+    public function create(){
+        return view('learners.create');
+    }
+
+    public function store(Request $request){
+        $this->validate($request,[
+            'user_id' => 'required|numeric',
+            'level' => 'required',
+            'status' => 'required',
+        ]);
+
+        Learner::create($request->all());
+
+        return redirect('/learners')->with('info', 'New learner has been Added.');
+    }
+
+    public function edit($id){
+        $learners = Learner::find($id);
+
+        return view('learners.edit', ['learners'=>$learners]);
+    }
+
+    public function update(Request $request, $id){
+        $learners = Learner::find($id);
+
+        $learners->update($request->all());
+
+        return redirect('/learners')->with('info', "The record of Learner: $learners->id has been updated.");
+    }
 }
