@@ -22,7 +22,7 @@ class Instructor extends Model
         $instructors = Instructor::orderByRaw('user_id')->get();
         $list = [];
         foreach($instructors as $ins){
-            $list[$ins->$id];
+            $list[$ins->id] = $ins->user->lname . ", " . $ins->user->fname;
         }
         return $list;
     }

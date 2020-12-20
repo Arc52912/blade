@@ -2,13 +2,11 @@
 
 @section('content')
 <br>
-
 <div class="float-right">
-    <a href="{{url('/courses/create')}}" class="btn btn-primary btn-sm">
+    <a href="{{url('courses/create')}}" class="btn btn-primary btn-sm">
         Add New Course
     </a>
 </div>
-
 <h1>List of Courses</h1>
 
 <table class="table table-bordered table-striped table-sm">
@@ -18,6 +16,8 @@
             <th>Description</th>
             <th>Start</th>
             <th>End</th>
+            <th>Tags</th>
+            <th>Instructor ID</th>
             <th>Option</th>
         </tr>
     </thead>
@@ -30,8 +30,12 @@
                 <td>{{$crs->description}}</td>
                 <td>{{$crs->start}}</td>
                 <td>{{$crs->end}}</td>
+                <td>{{$crs->tags}}</td>
+                <td>{{$crs->instructor_id}}</td>
                 <td>
-                    <button class="btn btn-info btn-sm">Edit</button>
+                    <a href="{{url('/courses/edit', ['name'=>$crs]) }}" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-check"></i> Edit
+                    </a>
                 </td>
             </tr>
 
